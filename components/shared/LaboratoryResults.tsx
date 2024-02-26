@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 const LaboratoryResults = () => {
   return (
-    <div className="pb-5">
+    <div>
       <div className="ring-1 ring-[#000000] ring-opacity-10">
         <div className="w-full h-[40px] flex bg-[#007C85] items-center justify-center p-2 mt-5 ">
           <div className="ml-auto py-5 mt-[100px]">
@@ -54,14 +54,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -83,14 +83,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -112,14 +112,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -141,14 +141,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -170,14 +170,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -199,14 +199,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -228,14 +228,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -257,14 +257,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -286,14 +286,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
@@ -315,14 +315,14 @@ const LaboratoryResults = () => {
                 >
                   <div className="flex ">
                     <Image
-                      src="/icons/dropMenuIcon.svg"
+                      src="/icons/Frame 247.svg"
                       alt="another icon"
                       width={20}
                       height={20}
                       className="mr-2"
                     />
                     <Image
-                      src="/icons/editIcon.svg"
+                      src="/icons/edit.svg"
                       alt="edit"
                       width={20}
                       height={20}
