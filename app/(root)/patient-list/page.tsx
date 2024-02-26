@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
+import PatientListTable from "@/components/tables/patientlist-table";
+
 import {
   Table,
   TableBody,
@@ -13,33 +15,11 @@ import {
 
 const PatientList = () => {
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
-      <div>PatientList</div>
-      <Button asChild>
-        <Link href="/patient-overview">Patient Overview</Link>
-      </Button>
-      <div className="max-w-[500px]">
-        <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">Invoice</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Method</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">INV001</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>Credit Card</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
+    <div className=" border border-light-2 shadow-md  w-full ">
+    <div className=" ">
+      <PatientListTable />
     </div>
+  </div>
   );
 };
 
