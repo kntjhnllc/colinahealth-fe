@@ -66,7 +66,21 @@ import Loading from "./loading";
 const PatientOverview: React.FC = () => {
   const patientId = 1; // Replace with the desired patientId
   const [patient, setPatient] = useState<any>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [activeMedicalHistory, setActiveMedicalHistory] = useState(false);
+  const [activeMedication, setActiveMedication] = useState(false);
+  const [activeVitalSigns, setActiveVitalSigns] = useState(false);
+  const [activeLabResults, setActiveLabResults] = useState(false);
+  const [activeAppointment, setActiveAppointment] = useState(false);
+  const [activeNotes, setActiveNotes] = useState(false);
+  const [activePatientDetails, setActivePatientDetails] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
+
+  const [selectedFramework, setSelectedFramework] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     if (patient.length == 0) {
@@ -78,6 +92,7 @@ const PatientOverview: React.FC = () => {
           console.error("Error fetching patient:", error);
         } finally {
           setLoading(false); // Set loading to false after fetching
+          setActiveMedicalHistory(true);
         }
       };
 
@@ -93,21 +108,6 @@ const PatientOverview: React.FC = () => {
   }
 
   console.log(patient);
-
-  const [activeMedicalHistory, setActiveMedicalHistory] = useState(true);
-  const [activeMedication, setActiveMedication] = useState(false);
-  const [activeVitalSigns, setActiveVitalSigns] = useState(false);
-  const [activeLabResults, setActiveLabResults] = useState(false);
-  const [activeAppointment, setActiveAppointment] = useState(false);
-  const [activeNotes, setActiveNotes] = useState(false);
-  const [activePatientDetails, setActivePatientDetails] = useState(false);
-
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-
-  const [selectedFramework, setSelectedFramework] = useState<string | null>(
-    null
-  );
 
   const handleFrameworkSelect = (value: string) => {
     setSelectedFramework(value);
@@ -271,7 +271,7 @@ const PatientOverview: React.FC = () => {
     : "";
 
   return (
-    <div className="flex flex-col pt-5 px-12">
+    <div className="flex flex-col pt-5 px-24 ">
       <div className="justify-start">
         <h1 className="font-semibold text-2xl">PatientOverview</h1>
         <p className="text-[#07143799] font-semibold">
@@ -284,25 +284,25 @@ const PatientOverview: React.FC = () => {
           {activeNotes && "Notes"}
         </p>
       </div>
-      <div className="ring-1 w-full h-full shadow-md ring-gray-300 px-5 pt-5 pb-[14px] rounded-md mt-2">
-        <div className="flex md:flex-row flex-col ">
-          <div className="md:-mt-3 flex justify-center">
+      <div className="ring-1 relative w-full h-full shadow-lg ring-gray-300 px-5 pt-5 pb-[14px] rounded-lg mt-2">
+        <div className="flex lg:flex-row flex-col ">
+          <div className="lg:-mt-3 flex justify-center">
             <Image
               src="/icons/profile.svg"
-              className="md:w-[200px] md:h-[200px] block mx-auto min-w-[200px]"
+              className="lg:w-[200px] lg:h-[200px] block mx-auto min-w-[200px]"
               alt="profile"
               width="252"
               height="252"
             />
           </div>
 
-          <div className="ml-4 mt-1 flex md:flex-row flex-col w-full">
-            <div className="md:w-1/4 w-full">
-              <h1 className="text-2xl font-semibold">
+          <div className="ml-4 mt-1 flex lg:flex-row flex-col w-full">
+            <div className="lg:w-1/4 w-full">
+              <h1 className="text-2xl font-semibold truncate">
                 {patient?.firstName} {patient?.lastName}
               </h1>
-              <div className="text-sm flex  mt-5 md:hidden">
-                <h1 className="text-[#07143799] font-semibold mr-1">
+              <div className="text-sm flex  mt-5 lg:hidden">
+                <h1 className="text-[#07143799] font-semibold mr-1 truncate">
                   ID: {patient?.patientId}
                 </h1>
                 <img
@@ -312,41 +312,41 @@ const PatientOverview: React.FC = () => {
                   width={15}
                 />
               </div>
-              <div className="flex flex-row  w-full mt-3 ">
+              <div className="flex flex-row  w-full mt-3 truncate">
                 <img
                   src="/icons/profile-circle.svg"
                   alt="profile-circle"
                   width={20}
                 />
-                <div className=" flex w-full justify-between pr-10 md:pr-5">
+                <div className=" flex w-full justify-between pr-10 lg:pr-5">
                   <h1 className="text-sm text-[#007C85] font-semibold ml-1">
                     Patient
                   </h1>
-                  <h1 className="text-sm text-[#07143799] font-semibold">
+                  <h1 className="text-sm text-[#07143799] font-semibold truncate">
                     Age: {patient?.age}
                   </h1>
                 </div>
               </div>
-              <div className="text-sm flex  mt-5">
+              <div className="text-sm flex  mt-5 truncate">
                 <img
                   src="/icons/statusCodeIcon.svg"
                   alt="statusCode"
                   width={20}
                 />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   Code Status: {patient?.codeStatus}
                 </h1>
               </div>
               <div className="text-sm flex  mt-5">
                 <img src="/icons/location.svg" alt="statusCode" width={20} />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   City: {patient?.city}
                 </h1>
               </div>
             </div>
-            <div className="md:w-1/4 md:mt-[22px] md:ml-10">
-              <div className="text-sm   mt-5 md:flex   hidden">
-                <h1 className="text-[#07143799] font-semibold mr-1">
+            <div className="lg:w-1/4 lg:mt-[22px] lg:ml-10">
+              <div className="text-sm   mt-5 lg:flex   hidden">
+                <h1 className="text-[#07143799] font-semibold mr-1 truncate">
                   ID: {patient?.patientId}
                 </h1>
                 <img
@@ -362,61 +362,61 @@ const PatientOverview: React.FC = () => {
                   alt="allergyIcon"
                   width={20}
                 />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   Allergy: {patient?.allergies}
                 </h1>
               </div>
               <div className="text-sm flex  mt-5">
                 <img src="/icons/stateIcon.svg" alt="stateIcon" width={20} />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   State: {patient?.state}
                 </h1>
               </div>
             </div>
-            <div className="md:w-1/4 md:mt-[62px] md:ml-10 ">
+            <div className="lg:w-1/4 lg:mt-[62px] lg:ml-10 ">
               <div className="text-sm flex  mt-5">
                 <img
                   src="/icons/calendarIcon.svg"
                   alt="allergyIcon"
                   width={20}
                 />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   {formattedDateOfBirth}
                 </h1>
               </div>
               <div className="text-sm flex  mt-5">
                 <img src="/icons/zipIcon.svg" alt="stateIcon" width={20} />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   ZIP: {patient?.zip}
                 </h1>
               </div>
             </div>
-            <div className="md:w-1/4 md:mt-[62px] md:ml-10 ">
+            <div className="lg:w-1/4 lg:mt-[62px] lg:ml-10 ">
               <div className="text-sm flex  mt-5">
                 <img
                   src="/icons/phoneNumberIcon.svg"
                   alt="allergyIcon"
                   width={20}
                 />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   {patient?.phoneNo}
                 </h1>
               </div>
               <div className="text-sm flex  mt-5">
                 <img src="/icons/countryIcon.svg" alt="stateIcon" width={20} />
-                <h1 className="text-[#07143799] font-semibold ml-1">
+                <h1 className="text-[#07143799] font-semibold ml-1 truncate">
                   Country: {patient?.country}
                 </h1>
               </div>
             </div>
-            <div className="md:w-1/4 md:ml-10 pr-5 pt-2 md:pr-0 md:pt-0 flex justify-end">
+            <div className="lg:w-1/4 pr-5 pt-2 lg:pr-0 lg:pt-0 flex justify-end relative truncate">
               <a
                 href=""
                 className={`underline text-sm  ${
                   activePatientDetails
                     ? "text-[#007C85] font-bold"
                     : "text-[#07143799] font-semibold"
-                } text-right`}
+                } text-right truncate`}
                 onClick={handleSeeMoreDetailsClick}
               >
                 See more details
@@ -424,7 +424,7 @@ const PatientOverview: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-5 md:block hidden ">
+        <div className="mt-5 lg:block hidden ">
           <a
             className={`mr-5  decoration-[3px] ${
               activeMedicalHistory
@@ -492,7 +492,7 @@ const PatientOverview: React.FC = () => {
             Notes
           </a>
         </div>
-        <div className="block md:hidden pt-2 w-full">
+        <div className="block lg:hidden pt-2 w-full">
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <Button
