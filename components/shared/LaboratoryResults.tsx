@@ -10,23 +10,24 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "../ui/button";
 const LaboratoryResults = () => {
   return (
     <div className="pb-5">
       <div className="ring-1 ring-[#000000] ring-opacity-10">
         <div className="w-full h-[40px] flex bg-[#007C85] items-center justify-center p-2 mt-5 ">
           <div className="ml-auto py-5 mt-[100px]">
-            <button className="mr-2 bg-[#1B84FF] text-[#ffffff] p-2 rounded">
+            <Button className="mr-2 bg-[#1B84FF] text-[#ffffff] p-2 rounded">
               Add Result
-            </button>
-            <button className="bg-[#ED5050] text-[#ffffff] p-2 rounded">
+            </Button>
+            <Button className="bg-[#ED5050] text-[#ffffff] p-2 rounded">
               Export PDF
-            </button>
+            </Button>
           </div>
         </div>
 
-        <div className="table-container shadow-md mt-[60px]">
-          <Table>
+        <div className="table-container shadow-md mt-[60px] px-5 pb-2">
+          <Table className="text-md">
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Date</TableHead>
