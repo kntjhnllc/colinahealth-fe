@@ -16,10 +16,13 @@ import {
 const PatientList = () => {
   return (
     <div className=" border border-light-2 shadow-md  w-full ">
-    <div className=" ">
-      <PatientListTable />
+      <div className=" ">
+        <PatientListTable />
+      </div>
+      <Button>
+        <Link href="/patient-overview">Patient Overview</Link>
+      </Button>
     </div>
-  </div>
   );
 };
 

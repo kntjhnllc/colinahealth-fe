@@ -17,10 +17,10 @@ const LaboratoryResults = () => {
       <div className="ring-1 ring-[#000000] ring-opacity-10">
         <div className="w-full h-[40px] flex bg-[#007C85] items-center justify-center p-2 mt-5 ">
           <div className="ml-auto py-5 mt-[100px]">
-            <Button className="mr-2 bg-[#1B84FF] text-[#ffffff] p-2 rounded">
+            <Button className="mr-2 bg-[#1b85ffdb] hover:bg-[#1b84ff] text-[#ffffff] p-2 rounded">
               Add Result
             </Button>
-            <Button className="bg-[#ED5050] text-[#ffffff] p-2 rounded">
+            <Button className="bg-[#ed5050d1] hover:bg-[#ed5050] text-[#ffffff] p-2 rounded">
               Export PDF
             </Button>
           </div>
