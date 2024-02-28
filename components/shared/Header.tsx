@@ -18,7 +18,7 @@ import {
 
 const Header = () => {
   return (
-    <div className="w-full flex bg-[#007C85] items-center justify-center p-4">
+    <div className="w-full flex bg-[#007C85] items-center justify-center py-4 px-20">
       <div className="md:w-1/4 w-full md:relative z-0 items-center justify-center">
         <Link href="/patient-list">
           <Image

@@ -16,12 +16,20 @@ import {
 
 const PatientList = () => {
   return (
-    <section className="w-full min-h-screen flex-1 flex-col items-center bg-light-1 px-8 pt-10 max-md:pb-32 sm:px-20">
-      {" "}
+    // <section className="w-full min-h-screen flex-1 flex-col items-center bg-light-1 px-8 pt-10 max-md:pb-32 sm:px-20">
+    //   {" "}
+    //   <div className=" ">
+    //     <PatientListTable />
+    //   </div>
+    // </section>
+    <div className=" border border-light-2 shadow-md  w-full ">
       <div className=" ">
         <PatientListTable />
       </div>
-    </section>
+      <Button>
+        <Link href="/patient-overview">Patient Overview</Link>
+      </Button>
+    </div>
   );
 };
 
