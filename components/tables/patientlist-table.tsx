@@ -1,7 +1,7 @@
-"use client";
 // import { DropdownMenuCheckboxItemProps } from "@radix-ui/
 // react-dropdown-menu";
 import { FaEllipsisV } from "react-icons/fa";
+import Loading from "../../app/(root)/patient-list/loading"; // Import the Loading component
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +26,40 @@ const sampleData = [
   { id: 5, name: "Michael", age: 28, gender: "Male" },
 ];
 const PatientListTable: React.FC = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<Error | null>(null);
+  const [data, setData] = React.useState<any[]>([]);
+  const [totalPages, setTotalPages] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/patient-information/list"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const jsonData = await response.json();
+        setData(jsonData.data);
+        setTotalPages(jsonData.totalPages);
+      } catch (error: any) {
+        // Explicitly specify the type of 'error'
+        setError(error); // Ensure 'error' is of type 'Error | null'
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <Loading />; // Render the Loading component while data is being fetched
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>; // Render error message if data fetching fails
+  }
   // const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
   // const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
   // const [showPanel, setShowPanel] = React.useState<Checked>(false);
@@ -128,7 +162,7 @@ const PatientListTable: React.FC = () => {
           <div className="bg-gray-200  flex justify-center md:justify-start col-span-2 md:px-1 py-2">
             Gender
           </div>
-          <div className="bg-gray-200  flex justify-center md:justify-center   col-span-2 border border-red md:px-1 py-2">
+          <div className="bg-gray-200  flex justify-center md:justify-center   col-span-2 md:px-1 py-2">
             Action
           </div>
         </div>
@@ -153,27 +187,32 @@ const PatientListTable: React.FC = () => {
             </div>
           </div> */}
           <div className="col-span-10 col-start-2">
-            {/* <div className="sm:text-sm md:text-base lg:text-lg pb-4 text-xs font-bold text-gray opacity-60 uppercase grid grid-cols-10">
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Patient ID
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Name
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Age
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Gender
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-center col-span-2 border border-red md:px-1 py-2">
-                Action
-              </div>
-            </div> */}
             <div className="gap-y-6 text-black grid grid-cols-10">
               {/* Table cells */}
               {/* Render dropdown buttons */}
+              {data.map((patient, index) => (
+                <React.Fragment key={index}>
+                  <div className="text-black opacity-100 col-span-2 px-1">
+                    {patient.uuid}
+                  </div>
+                  <div className="text-black opacity-100 col-span-2 px-1">
+                    {`${patient.firstName} ${patient.lastName}`}
+                  </div>
 
+                  <div className="text-black opacity-100 col-span-2 px-1">
+                    {patient.age}
+                  </div>
+                  <div className="text-black opacity-100 col-span-2 px-1">
+                    {patient.gender}
+                  </div>
+                  <div className="text-black opacity-100 col-span-2 px-1 flex justify-center">
+                    <Button variant="gray" size="sm">
+                      View
+                    </Button>
+                  </div>
+                </React.Fragment>
+              ))}
+              {/* 
               {Array.from({ length: 5 }).map((_, rowIndex) =>
                 Array.from({ length: 5 }).map((_, colIndex) => {
                   let textColorClass =
@@ -197,7 +236,7 @@ const PatientListTable: React.FC = () => {
                     </div>
                   );
                 })
-              )}
+              )} */}
             </div>
           </div>
           ;
