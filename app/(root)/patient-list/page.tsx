@@ -44,33 +44,33 @@ const PatientList = () => {
   //   fetchData();
   // }, []);
   return (
-    // <section className="w-full min-h-screen flex-1 flex-col items-center bg-light-1 px-8 pt-10 max-md:pb-32 sm:px-20">
-    //   {" "}
-    //   <div className=" ">
-    //     <PatientListTable />
-    //   </div>
-    // </section>
-    <div className=" border border-light-2 shadow-md  w-full ">
+    <section className="w-full min-h-screen flex-1 flex-col items-center bg-light-1 px-8 pt-10 max-md:pb-32 sm:px-20">
+      {" "}
       <div className=" ">
         <PatientListTable />
-      {/* </div>
-      <Button>
-        <Link href="/patient-overview">Patient Overview</Link>
-      </Button>
-      <div>
-        <h2>Patients</h2> */}
-        {/* <p>Total Pages: {totalPages}</p>
-
-        <ul>
-          {data.map((patient: any) => (
-            <li key={patient.uuid}>
-              {patient.firstName} {patient.lastName}, Age: {patient.age},
-              Gender: {patient.gender}
-            </li>
-          ))}
-        </ul> */}
       </div>
-    </div>
+    </section>
+    // <div className=" border border-light-2 shadow-md  w-full ">
+    //   <div className=" ">
+    //     <PatientListTable />
+    //   {/* </div>
+    //   <Button>
+    //     <Link href="/patient-overview">Patient Overview</Link>
+    //   </Button>
+    //   <div>
+    //     <h2>Patients</h2> */}
+    //     {/* <p>Total Pages: {totalPages}</p>
+
+    //     <ul>
+    //       {data.map((patient: any) => (
+    //         <li key={patient.uuid}>
+    //           {patient.firstName} {patient.lastName}, Age: {patient.age},
+    //           Gender: {patient.gender}
+    //         </li>
+    //       ))}
+    //     </ul> */}
+    //   </div>
+    // </div>
   );
 };
 
