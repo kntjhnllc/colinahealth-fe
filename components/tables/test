@@ -1,0 +1,30 @@
+ <div className="gap-y-6 text-black grid grid-cols-10">
+            {/* Table cells */}
+            {sampleData.map((rowData, rowIndex) =>
+              Object.entries(rowData).map(([key, cellData], colIndex) => {
+                let textColorClass =
+                  colIndex === 0 ? "text-black" : "text-gray opacity-60 "; // Checking if it's the Patient ID column
+                let content = cellData;
+
+                if (colIndex === Object.keys(rowData).length - 1) {
+                  // If it's the last column, render the View button
+                  content = (
+                    <div className="text-black opacity-100 flex justify-center ">
+                      <Button variant="gray" size="sm">
+                        View
+                      </Button>
+                    </div>
+                  );
+                }
+
+                return (
+                  <div
+                    key={`${rowIndex}-${key}`} // Use a string concatenation for the key attribute
+                    className={`sm:text-xs md:text-sm text-xs font-bold col-span-2 px-1 ${textColorClass}`}
+                  >
+                    {content}
+                  </div>
+                );
+              })
+            )}
+          </div>

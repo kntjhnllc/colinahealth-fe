@@ -18,13 +18,7 @@ import * as React from "react";
 // import GetPatientListComponent from "../../components/data/getPatientList-comp";
 
 // type Checked = DropdownMenuCheckboxItemProps["checked"];
-const sampleData = [
-  { id: 1, name: "John", age: 25, gender: "Male" },
-  { id: 2, name: "Alice", age: 30, gender: "Female" },
-  { id: 3, name: "Bob", age: 40, gender: "Male" },
-  { id: 4, name: "Emily", age: 35, gender: "Female" },
-  { id: 5, name: "Michael", age: 28, gender: "Male" },
-];
+
 const PatientListTable: React.FC = () => {
   // const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
   // const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
@@ -132,75 +126,34 @@ const PatientListTable: React.FC = () => {
             Action
           </div>
         </div>
+        <div className="gap-y-6 text-black grid grid-cols-10">
+          {/* Table cells */}
+          {/* Render dropdown buttons */}
 
-        <div className="col-span-10 col-start-2">
-          {/* <div className="sm:text-sm md:text-base lg:text-lg pb-4 text-xs font-bold text-gray opacity-60 uppercase grid grid-cols-10">
-            Table headers
-            <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-              Patient ID
-            </div>
-            <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-              Name
-            </div>
-            <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-              Age
-            </div>
-            <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-              Gender
-            </div>
-            <div className="bg-gray-200 flex justify-center md:justify-center col-span-2 border border-red md:px-1 py-2">
-              Action
-            </div>
-          </div> */}
-          <div className="col-span-10 col-start-2">
-            {/* <div className="sm:text-sm md:text-base lg:text-lg pb-4 text-xs font-bold text-gray opacity-60 uppercase grid grid-cols-10">
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Patient ID
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Name
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Age
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-start col-span-2 md:px-1 py-2">
-                Gender
-              </div>
-              <div className="bg-gray-200 flex justify-center md:justify-center col-span-2 border border-red md:px-1 py-2">
-                Action
-              </div>
-            </div> */}
-            <div className="gap-y-6 text-black grid grid-cols-10">
-              {/* Table cells */}
-              {/* Render dropdown buttons */}
-
-              {Array.from({ length: 5 }).map((_, rowIndex) =>
-                Array.from({ length: 5 }).map((_, colIndex) => {
-                  let textColorClass =
-                    colIndex === 0 ? "text-black" : "text-gray opacity-60 "; // Checking if it's the Patient ID column
-                  let content =
-                    colIndex === 4 ? (
-                      <div className="text-black opacity-100 flex justify-center ">
-                        <Button variant="gray" size="sm">
-                          View{" "}
-                        </Button>
-                      </div>
-                    ) : (
-                      `Row ${rowIndex + 1}, Col ${colIndex + 1}`
-                    ); // Render viewActionButton in the 5th column, otherwise render text
-                  return (
-                    <div
-                      key={`${rowIndex}-${colIndex}`}
-                      className={` sm:text-xs md:text-sm  text-xs  font-bold  col-span-2  px-1 ${textColorClass}`}
-                    >
-                      {content}
-                    </div>
-                  );
-                })
-              )}
-            </div>
-          </div>
-          ;
+          {Array.from({ length: 5 }).map((_, rowIndex) =>
+            Array.from({ length: 5 }).map((_, colIndex) => {
+              let textColorClass =
+                colIndex === 0 ? "text-black" : "text-gray opacity-60 "; // Checking if it's the Patient ID column
+              let content =
+                colIndex === 4 ? (
+                  <div className="text-black opacity-100 flex justify-center ">
+                    <Button variant="gray" size="sm">
+                      View{" "}
+                    </Button>
+                  </div>
+                ) : (
+                  `Row ${rowIndex + 1}, Col ${colIndex + 1}`
+                ); // Render viewActionButton in the 5th column, otherwise render text
+              return (
+                <div
+                  key={`${rowIndex}-${colIndex}`}
+                  className={` sm:text-xs md:text-sm  text-xs  font-bold  col-span-2  px-1 ${textColorClass}`}
+                >
+                  {content}
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>
