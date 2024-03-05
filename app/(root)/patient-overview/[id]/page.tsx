@@ -58,7 +58,7 @@ const frameworks = [
   },
 ];
 import { useMemo } from "react";
-// import Loading from "./loading";
+import Loading from "./loading";
 import { useRouter } from "next/router";
 
 const PatientOverview = () => {
@@ -100,9 +100,9 @@ const PatientOverview = () => {
   }, [patientId]); // Make sure to include patientId in the dependency array
 
   // Render loading indicator if loading is true
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   console.log(patient);
 

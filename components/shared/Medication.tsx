@@ -177,8 +177,12 @@ const MedicalHistory = () => {
                       </Button>
                     </HoverCardTrigger>
                     <HoverCardContent className="w-80">
-                      <div className="bg-[#007C85] text-white"></div>
-                      <div className="hover-card-content">
+                      <div className="bg-[#007C85] text-white">
+                        {/* Your content here */}
+                      </div>
+                      <div className="hover-card-content relative">
+                        <div className="arrow-up bg-[#007C85]"></div>
+                        {/* Your content here */}
                         <h4 className="font-bold">Medications:</h4>
                         <h4 className="font-bold">Frequency:</h4>
                         <h4 className="font-bold">No. of Days:</h4>
@@ -215,24 +219,35 @@ const MedicalHistory = () => {
           </Table>
         </div>
       </div>
-      <div>
-        <h4 className="flex justify-start">Page 1 of 10</h4>
-        <Pagination className="flex justify-end">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+      <div className="flex items-center p-2">
+        <h4>Page 1 of 10</h4>
+        <div className="ml-auto">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#" isActive>
+                  2
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext href="#" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+          <Pagination />
+        </div>
       </div>
     </div>
   );

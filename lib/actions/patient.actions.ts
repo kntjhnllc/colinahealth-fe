@@ -1,33 +1,11 @@
-// Import fetchData function from your API file
-import { fetchData } from "@/server/api";
-// patientService.ts
+import axios from "axios";
 
 export const getPatientById = async (patientId: number) => {
-  const query = `
-    query GetPatientInformation($patientId: Int!) {
-      getPatientInformation(patientId: $patientId) {
-        patientId
-        firstName
-        lastName
-        age
-        dateOfBirth
-        gender
-        city
-        state
-        zip
-        country
-        phoneNo
-        allergies
-        codeStatus
-      }
-    }
-  `;
-
-  const variables = { patientId };
+  const url = `http://localhost:3000/patient-information/${patientId}`;
 
   try {
-    const response = await fetchData(query, variables);
-    return response.data.getPatientInformation; // Assuming the response structure matches
+    const response = await axios.get(url);
+    return response.data;
   } catch (error) {
     console.error("Error fetching patient:", error);
     throw error; // Re-throw the error to handle it elsewhere if needed

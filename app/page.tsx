@@ -1,10 +1,52 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { setTimeout } from "timers";
 
 const Login = () => {
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
+
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        setLoginFailed(true);
+        throw new Error("Failed to login");
+      }
+      const data = await response.json();
+      console.log(data.accessToken);
+      document.cookie = `accessToken=${data.accessToken};path=/;`;
+      // Redirect to patient-list page upon successful login
+      router.push("/patient-list");
+    } catch (error) {
+      setError("Invalid email or password");
+      setLoginFailed(true);
+    }
+    setTimeout(() => {
+      setLoginFailed(false);
+      setError("");
+    }, 2000);
+  };
+
   return (
     <main className="flex flex-col md:flex-row items-center justify-center h-screen w-full relative">
       <div className="bg-[#007C85] w-1/3 h-full flex flex-col hidden md:block justify-center items-center relative ">
@@ -44,16 +86,31 @@ const Login = () => {
           <form className="mt-8 ">
             <div className="mb-5">
               <Input
+                type="text"
+                value={username}
                 className="bg-[#D9D9D90D] text-md h-[60px] placeholder-gray-400 text-black px-4 py-2 rounded-md border focus:border-gray-200"
                 placeholder="input email or username"
+                onChange={(e) => setUsername(e?.target.value)}
+                required
               />
             </div>
             <div className="mb-5">
               <Input
+                type="password"
+                value={password}
                 className="bg-[#D9D9D90D] text-md h-[60px] placeholder-gray-400 text-black px-4 py-2 rounded-md border focus:border-gray-200"
                 placeholder="input password"
+                onChange={(e) => setPassword(e?.target.value)}
+                required
               />
             </div>
+            <p
+              className={`text-red-500 ${
+                loginFailed ? "shake block " : "hidden"
+              }`}
+            >
+              {error}
+            </p>
             <div className="flex justify-between mb-5">
               <div className="flex items-center">
                 <Checkbox className="mr-3" />
@@ -64,10 +121,10 @@ const Login = () => {
               </a>
             </div>
             <Button
-              asChild
               className="w-full h-[60px] bg-[#007C85] hover:bg-[#114447]"
+              onClick={handleSubmit}
             >
-              <Link href="/patient-list">Sign In</Link>
+              Sign In
             </Button>
           </form>
         </div>

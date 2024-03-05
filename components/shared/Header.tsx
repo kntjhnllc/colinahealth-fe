@@ -15,8 +15,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+  const handleLogout = () => {
+    document.cookie = "accessToken=;";
+    router.push("/");
+  };
+
   return (
     <div className="w-full flex bg-[#007C85] items-center justify-center py-4 px-20">
       <div className="md:w-1/4 w-full md:relative z-0 items-center justify-center">
@@ -65,9 +72,10 @@ const Header = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Language</DropdownMenuItem>
                 <DropdownMenuItem>Account Settings</DropdownMenuItem>
-                <Link href="/">
-                  <DropdownMenuItem>Sign Out</DropdownMenuItem>
-                </Link>
+
+                <DropdownMenuItem onClick={handleLogout}>
+                  Sign Out
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
